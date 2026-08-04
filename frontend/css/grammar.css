@@ -44,17 +44,11 @@
 
 }
 
-input,
-select,
 textarea{
+
+    min-height:220px;
 
     background:#fff;
-
-}
-
-textarea{
-
-    min-height:180px;
 
 }
 
@@ -62,7 +56,7 @@ textarea{
    OUTPUT
 =================================== */
 
-#generatedEmail{
+#correctedText{
 
     background:#f8f9fc;
 
@@ -81,7 +75,6 @@ textarea{
     margin-top:20px;
 
 }
-
 /* ===================================
    BUTTON
 =================================== */

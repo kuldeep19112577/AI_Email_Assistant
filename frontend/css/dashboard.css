@@ -1,0 +1,154 @@
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.hero{
+    width:90%;
+    max-width:1200px;
+    margin:60px auto 40px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:48px;
+    color:#2d5cff;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    color:#666;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* ===========================
+   FEATURES GRID
+=========================== */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+    margin-bottom:60px;
+
+}
+
+/* ===========================
+   FEATURE CARD
+=========================== */
+
+.feature-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.feature-icon{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+}
+
+.feature-card h2{
+
+    color:#2d5cff;
+
+    margin-bottom:12px;
+
+    font-size:24px;
+
+}
+
+.feature-card p{
+
+    color:#666;
+
+    line-height:1.7;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   COMING SOON
+=========================== */
+
+.disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+}
+
+.disabled:hover{
+
+    transform:none;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+    .hero{
+
+        margin-top:40px;
+
+    }
+
+    .hero h1{
+
+        font-size:36px;
+
+    }
+
+    .hero p{
+
+        font-size:16px;
+
+    }
+
+}

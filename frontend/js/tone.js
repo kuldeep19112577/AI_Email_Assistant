@@ -1,22 +1,22 @@
-const rewriteBtn = document.getElementById("rewriteBtn");
+const toneBtn = document.getElementById("toneBtn");
 const copyBtn = document.getElementById("copyBtn");
 
-const instruction = document.getElementById("instruction");
-const originalEmail = document.getElementById("originalEmail");
-const rewrittenEmail = document.getElementById("rewrittenEmail");
+const tone = document.getElementById("tone");
+const email = document.getElementById("email");
+const modifiedEmail = document.getElementById("modifiedEmail");
 
 
-rewriteBtn.addEventListener("click", async () => {
+toneBtn.addEventListener("click", async () => {
 
-    if (!originalEmail.value.trim()) {
+    if (!email.value.trim()) {
 
-        alert("Please enter the original email.");
+        alert("Please enter an email.");
 
         return;
 
     }
 
-    if (originalEmail.value.trim().length < 10) {
+    if (email.value.trim().length < 10) {
 
         alert("Email should contain at least 10 characters.");
 
@@ -24,11 +24,11 @@ rewriteBtn.addEventListener("click", async () => {
 
     }
 
-    rewriteBtn.disabled = true;
+    toneBtn.disabled = true;
 
-    rewriteBtn.innerText = "Rewriting...";
+    toneBtn.innerText = "Changing...";
 
-    rewrittenEmail.value = "";
+    modifiedEmail.value = "";
 
     copyBtn.disabled = true;
 
@@ -36,7 +36,7 @@ rewriteBtn.addEventListener("click", async () => {
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/rewrite/",
+            "http://127.0.0.1:8000/tone/",
 
             {
 
@@ -50,9 +50,9 @@ rewriteBtn.addEventListener("click", async () => {
 
                 body: JSON.stringify({
 
-                    original_email: originalEmail.value,
+                    email: email.value,
 
-                    instruction: instruction.value
+                    tone: tone.value
 
                 })
 
@@ -68,7 +68,7 @@ rewriteBtn.addEventListener("click", async () => {
 
         }
 
-        rewrittenEmail.value = data.rewritten_email;
+        modifiedEmail.value = data.modified_email;
 
         copyBtn.disabled = false;
 
@@ -78,16 +78,16 @@ rewriteBtn.addEventListener("click", async () => {
         console.error(error);
 
         alert(
-            error.message || "Failed to rewrite email."
+            error.message || "Failed to change tone."
         );
 
     }
 
     finally {
 
-        rewriteBtn.disabled = false;
+        toneBtn.disabled = false;
 
-        rewriteBtn.innerText = "Rewrite Email";
+        toneBtn.innerText = "Change Tone";
 
     }
 
@@ -96,7 +96,7 @@ rewriteBtn.addEventListener("click", async () => {
 
 copyBtn.addEventListener("click", async () => {
 
-    if (!rewrittenEmail.value.trim()) {
+    if (!modifiedEmail.value.trim()) {
 
         return;
 
@@ -106,7 +106,7 @@ copyBtn.addEventListener("click", async () => {
 
         await navigator.clipboard.writeText(
 
-            rewrittenEmail.value
+            modifiedEmail.value
 
         );
 

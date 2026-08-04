@@ -5,14 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Rewrite Email</title>
+    <title>Tone Change</title>
 
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/rewrite.css">
+    <link rel="stylesheet" href="css/tone.css">
 
 </head>
 
@@ -31,45 +30,27 @@
         <ul class="nav-links">
 
             <li>
-
                 <a href="index.html">
-
                     Dashboard
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="email.html">
-
                     Generate
-
                 </a>
-
             </li>
 
             <li>
-
-                <a
-                    href="rewrite.html"
-                    class="active">
-
+                <a href="rewrite.html">
                     Rewrite
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="grammar.html">
-
                     Grammar
-
                 </a>
-
             </li>
 
         </ul>
@@ -82,13 +63,13 @@
 
         <h1 class="page-title">
 
-            ✏ Rewrite Email
+            🎭 Tone Change
 
         </h1>
 
         <p class="page-subtitle">
 
-            Rewrite your email professionally using AI.
+            Change the tone of your email using Artificial Intelligence.
 
         </p>
 
@@ -98,19 +79,19 @@
 
             <h2 class="section-title">
 
-                Rewrite Details
+                Tone Details
 
             </h2>
 
             <div class="form-group">
 
-                <label for="instruction">
+                <label for="tone">
 
-                    Rewrite Instruction
+                    Select Tone
 
                 </label>
 
-                <select id="instruction">
+                <select id="tone">
 
                     <option value="Professional">
                         Professional
@@ -124,16 +105,16 @@
                         Formal
                     </option>
 
-                    <option value="Shorter">
-                        Shorter
+                    <option value="Casual">
+                        Casual
                     </option>
 
-                    <option value="More Polite">
-                        More Polite
+                    <option value="Polite">
+                        Polite
                     </option>
 
-                    <option value="More Confident">
-                        More Confident
+                    <option value="Confident">
+                        Confident
                     </option>
 
                 </select>
@@ -142,23 +123,23 @@
 
             <div class="form-group">
 
-                <label for="originalEmail">
+                <label for="email">
 
                     Original Email
 
                 </label>
 
                 <textarea
-                    id="originalEmail"
+                    id="email"
                     placeholder="Paste your email here..."></textarea>
 
             </div>
 
             <button
-                id="rewriteBtn"
+                id="toneBtn"
                 class="btn">
 
-                Rewrite Email
+                Change Tone
 
             </button>
 
@@ -169,14 +150,14 @@
 
             <h2 class="section-title">
 
-                Rewritten Email
+                Modified Email
 
             </h2>
 
             <textarea
-                id="rewrittenEmail"
+                id="modifiedEmail"
                 readonly
-                placeholder="Your rewritten email will appear here..."></textarea>
+                placeholder="Your modified email will appear here..."></textarea>
 
             <div class="button-group">
 
@@ -208,7 +189,7 @@
     </footer>
 
     <script src="js/common.js"></script>
-    <script src="js/rewrite.js"></script>
+    <script src="js/tone.js"></script>
 
 </body>
 

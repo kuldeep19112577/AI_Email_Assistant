@@ -1,67 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Email Assistant</title>
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Generate Email</title>
+
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/email.css">
+
 </head>
+
 <body>
 
-<div class="container">
+    <!-- ================= NAVBAR ================= -->
 
-    <h1>AI Email Assistant</h1>
-    <h2>Generate Professional Email</h2>
+    <nav class="navbar">
 
-    <label>Email Type</label>
-    <select id="emailType">
-        <option>Leave Request</option>
-        <option>Meeting Request</option>
-        <option>Job Application</option>
-        <option>Apology</option>
-    </select>
+        <div class="logo">
 
-    <label>Recipient</label>
-    <input
-        type="text"
-        id="recipient"
-        placeholder="HR Manager"
-    >
+            AI Email Assistant
 
-    <label>Tone</label>
-    <select id="tone">
-        <option>Professional</option>
-        <option>Friendly</option>
-        <option>Formal</option>
-    </select>
+        </div>
 
-    <label>Purpose</label>
-    <textarea
-        id="purpose"
-        rows="5"
-        placeholder="Write your purpose..."
-    ></textarea>
+        <ul class="nav-links">
 
-    <button id="generateBtn">
-        Generate Email
-    </button>
+            <li>
+                <a href="index.html">
+                    Dashboard
+                </a>
+            </li>
 
-    <h2>Generated Email</h2>
+            <li>
+                <a
+                    href="email.html"
+                    class="active">
 
-    <textarea
-        id="generatedEmail"
-        rows="12"
-        readonly
-    ></textarea>
+                    Generate
 
-    <button id="copyBtn" disabled>
-        Copy Email
-    </button>
+                </a>
+            </li>
 
-</div>
+            <li>
+                <a href="rewrite.html">
+                    Rewrite
+                </a>
+            </li>
 
-<script src="js/email.js"></script>
+            <li>
+                <a href="grammar.html">
+                    Grammar
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- ================= PAGE ================= -->
+
+    <main class="container">
+
+        <h1 class="page-title">
+
+            📝 Generate Email
+
+        </h1>
+
+        <p class="page-subtitle">
+
+            Generate professional emails using Artificial Intelligence.
+
+        </p>
+
+        <!-- ================= INPUT CARD ================= -->
+
+        <section class="card">
+
+            <h2 class="section-title">
+
+                Email Details
+
+            </h2>
+
+            <div class="form-group">
+
+                <label for="emailType">
+
+                    Email Type
+
+                </label>
+
+                <select id="emailType">
+
+                    <option value="Formal">
+
+                        Formal
+
+                    </option>
+
+                    <option value="Informal">
+
+                        Informal
+
+                    </option>
+
+                    <option value="Business">
+
+                        Business
+
+                    </option>
+
+                    <option value="Leave Request">
+
+                        Leave Request
+
+                    </option>
+
+                    <option value="Meeting Request">
+
+                        Meeting Request
+
+                    </option>
+
+                    <option value="Apology">
+
+                        Apology
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="recipient">
+
+                    Recipient
+
+                </label>
+
+                <input
+                    type="text"
+                    id="recipient"
+                    placeholder="Example: HR Manager">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="tone">
+
+                    Tone
+
+                </label>
+
+                <select id="tone">
+
+                    <option value="Professional">
+
+                        Professional
+
+                    </option>
+
+                    <option value="Friendly">
+
+                        Friendly
+
+                    </option>
+
+                    <option value="Formal">
+
+                        Formal
+
+                    </option>
+
+                    <option value="Polite">
+
+                        Polite
+
+                    </option>
+
+                    <option value="Confident">
+
+                        Confident
+
+                    </option>
+
+                </select>
+
+            </div>
+                        <div class="form-group">
+
+                <label for="purpose">
+
+                    Purpose
+
+                </label>
+
+                <textarea
+                    id="purpose"
+                    placeholder="Describe why you want to send this email..."></textarea>
+
+            </div>
+
+            <button
+                id="generateBtn"
+                class="btn">
+
+                Generate Email
+
+            </button>
+
+        </section>
+
+        <!-- ================= OUTPUT CARD ================= -->
+
+        <section class="card">
+
+            <h2 class="section-title">
+
+                Generated Email
+
+            </h2>
+
+            <textarea
+                id="generatedEmail"
+                readonly
+                placeholder="Your generated email will appear here..."></textarea>
+
+            <div class="button-group">
+
+                <button
+                    id="copyBtn"
+                    class="btn"
+                    disabled>
+
+                    Copy Email
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 AI Email Assistant. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/email.js"></script>
 
 </body>
+
 </html>
