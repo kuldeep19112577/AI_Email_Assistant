@@ -8,17 +8,31 @@ const purpose = document.getElementById("purpose");
 
 const generatedEmail = document.getElementById("generatedEmail");
 
-
 generateBtn.addEventListener("click", async () => {
-    if (
-        !recipient.value.trim() ||
-        !purpose.value.trim()
-    ) {
-        alert("Please fill all required fields.");
+
+    // Input validation
+    if (!recipient.value.trim()) {
+        alert("Please enter the recipient.");
         return;
     }
+
+    if (!purpose.value.trim()) {
+        alert("Please enter the purpose.");
+        return;
+    }
+
+    if (purpose.value.trim().length < 10) {
+        alert("Purpose is too short.");
+        return;
+    }
+
+    // Loading state
     generateBtn.innerText = "Generating...";
     generateBtn.disabled = true;
+
+    // Clear previous result
+    generatedEmail.value = "";
+    copyBtn.disabled = true;
 
     try {
 
@@ -39,18 +53,24 @@ generateBtn.addEventListener("click", async () => {
         );
 
         const data = await response.json();
+
         if (!response.ok) {
             throw new Error(data.detail);
         }
 
-generatedEmail.value = data.generated_email;
-copyBtn.disabled = false;
+        // Display generated email
+        generatedEmail.value = data.generated_email;
+
+        // Enable copy button
+        copyBtn.disabled = false;
 
     } catch (error) {
 
+        console.error(error);
+
         alert(
-         "Something went wrong while generating the email.\nPlease try again."
-    );
+            "Unable to generate the email.\n\nPlease try again."
+        );
 
     } finally {
 
@@ -61,15 +81,16 @@ copyBtn.disabled = false;
 
 });
 
-
 copyBtn.addEventListener("click", () => {
 
-    if (!generatedEmail.value.trim()) {
-        alert("Generate an email first.");
-        return;
-    }
+    navigator.clipboard.writeText(
+        generatedEmail.value
+    );
 
-    navigator.clipboard.writeText(generatedEmail.value);
+    copyBtn.innerText = "Copied!";
 
-    alert("Email copied successfully!");
+    setTimeout(() => {
+        copyBtn.innerText = "Copy Email";
+    }, 2000);
+
 });

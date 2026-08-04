@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.auth import router as auth_router
 from app.api.email import router as email_router
+from app.api.rewrite import router as rewrite_router
 
 app = FastAPI(title="AI Email Assistant")
 
@@ -19,3 +20,4 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(email_router)
+app.include_router(rewrite_router)

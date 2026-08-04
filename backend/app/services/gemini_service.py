@@ -8,11 +8,13 @@ client = genai.Client(
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
+MODEL = os.getenv("GEMINI_MODEL")
+
 
 def generate_content(prompt: str):
 
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model=MODEL,
         contents=prompt
     )
 

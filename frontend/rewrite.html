@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewrite Email</title>
+
+    <link rel="stylesheet" href="css/rewrite.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AI Email Assistant</h1>
+    <h2>Rewrite Email</h2>
+
+    <label>Rewrite Style</label>
+
+    <select id="instruction">
+        <option>Rewrite professionally</option>
+        <option>Make it more friendly</option>
+        <option>Make it formal</option>
+        <option>Make it shorter</option>
+        <option>Make it longer</option>
+        <option>Improve grammar</option>
+        <option>Improve clarity</option>
+    </select>
+
+    <label>Original Email</label>
+
+    <textarea
+        id="originalEmail"
+        rows="10"
+        placeholder="Paste your email here..."
+    ></textarea>
+
+    <button id="rewriteBtn">
+        Rewrite Email
+    </button>
+
+    <h2>Rewritten Email</h2>
+
+    <textarea
+        id="rewrittenEmail"
+        rows="10"
+        readonly
+    ></textarea>
+
+    <button id="copyBtn" disabled>
+        Copy Email
+    </button>
+
+</div>
+
+<script src="js/rewrite.js"></script>
+
+</body>
+</html>
