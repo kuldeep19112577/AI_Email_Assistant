@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — AI Email Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <svg class="auth-brand__mark" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="5" width="22" height="16" rx="3" stroke="#4F46E5" stroke-width="2"/>
+        <path d="M3 8l10 7 10-7" stroke="#4F46E5" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <span class="auth-brand__text">AI Email Assistant</span>
+    </div>
+
+    <div class="auth-card__header">
+      <h1>Welcome back</h1>
+      <p>Log in to your account.</p>
+    </div>
+
+    <form id="loginForm" novalidate>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="ada@example.com" autocomplete="email" />
+        <p class="field__error" id="emailError"></p>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="field__input-wrap">
+          <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" maxlength="16" />
+          <button type="button" class="toggle-visibility" id="togglePassword" aria-label="Show password">
+            <svg class="icon-eye" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 10s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6Z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <path d="M1 10s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6Z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 2l16 16" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+        </div>
+        <p class="field__hint" id="passwordHint">Maximum 16 characters.</p>
+        <p class="field__error" id="passwordError"></p>
+      </div>
+
+      <button type="submit" class="btn btn--primary" id="submitBtn">
+        <span class="btn__label">Log in</span>
+      </button>
+
+      <p class="form-status" id="formStatus" role="status"></p>
+
+    </form>
+
+    <p class="auth-footer">Don't have an account? <a href="signup.html">Create Account</a></p>
+
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
