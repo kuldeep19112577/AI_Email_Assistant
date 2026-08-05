@@ -12,13 +12,14 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 from app.dependencies import get_current_user
 from app.database.models import User
+from app.dependencies import get_db
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# def get_db():
+#     db = SessionLocal()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
 
 
 @router.post("/signup")
