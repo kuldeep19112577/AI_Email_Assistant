@@ -5,10 +5,7 @@ from app.schemas.grammar import (
     GrammarResponse
 )
 
-from app.services.grammar_service import (
-    grammar_check
-)
-
+from app.services.grammar_service import check_grammar
 router = APIRouter(
     prefix="/grammar",
     tags=["Grammar Check"]
@@ -23,7 +20,7 @@ def grammar_api(request: GrammarRequest):
 
     try:
 
-        corrected = grammar_check(
+        corrected = check_grammar(
             request.text
         )
 

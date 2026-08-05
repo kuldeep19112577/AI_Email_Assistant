@@ -1,9 +1,28 @@
 from app.prompts.grammar_prompt import build_grammar_prompt
 from app.services.gemini_service import generate_content
+from app.services.history_service import save_history
 
 
-def grammar_check(text: str):
+def check_grammar(
+    email: str,
+):
 
-    prompt = build_grammar_prompt(text)
+    prompt = build_grammar_prompt(
 
-    return generate_content(prompt)
+        email=email,
+
+    )
+
+    corrected_email = generate_content(prompt)
+
+    save_history(
+
+        feature="Grammar",
+
+        user_input=email,
+
+        ai_output=corrected_email,
+
+    )
+
+    return corrected_email

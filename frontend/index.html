@@ -2,17 +2,23 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>AI Email Assistant</title>
 
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/dashboard.css">
+
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- =======================
+         Navigation Bar
+    ======================== -->
 
     <nav class="navbar">
 
@@ -21,117 +27,165 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Dashboard</a></li>
-            <li><a href="email.html">Generate</a></li>
-            <li><a href="rewrite.html">Rewrite</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="tone.html">Tone</a></li>
+
+            <li>
+                <a href="index.html">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="email.html">Generate</a>
+            </li>
+
+            <li>
+                <a href="rewrite.html">Rewrite</a>
+            </li>
+
+            <li>
+                <a href="grammar.html">Grammar</a>
+            </li>
+
+            <li>
+                <a href="tone.html">Tone</a>
+            </li>
+
+            <li>
+                <a href="compose.html">Compose</a>
+            </li>
+
+            <li>
+                <a href="history.html">History</a>
+            </li>
+
         </ul>
 
     </nav>
 
-    <!-- ================= HERO ================= -->
+    <!-- =======================
+         Hero Section
+    ======================== -->
 
     <section class="hero">
 
-        <h1>AI Email Assistant</h1>
+        <h1>Welcome to AI Email Assistant</h1>
 
         <p>
-            Generate, Rewrite and Improve Emails using Artificial Intelligence.
+
+            Generate, rewrite and improve professional emails
+            using Artificial Intelligence.
+
         </p>
 
     </section>
 
-    <!-- ================= FEATURES ================= -->
+    <!-- =======================
+         Dashboard Cards
+    ======================== -->
 
-    <main class="container">
+    <main class="dashboard">
 
-        <section class="features">
+        <!-- Generate -->
 
-            <a href="email.html" class="feature-card">
+        <div class="card"
+             onclick="window.location.href='email.html'">
 
-                <div class="feature-icon">📝</div>
+            <div class="card-icon">📝</div>
 
-                <h2>Generate Email</h2>
+            <h2>Generate Email</h2>
 
-                <p>
-                    Generate professional emails instantly with AI.
-                </p>
+            <p>
 
-            </a>
+                Generate professional emails instantly using AI.
 
-            <a href="rewrite.html" class="feature-card">
+            </p>
 
-                <div class="feature-icon">✏️</div>
+        </div>
 
-                <h2>Rewrite Email</h2>
+        <!-- Rewrite -->
 
-                <p>
-                    Rewrite existing emails professionally.
-                </p>
+        <div class="card"
+             onclick="window.location.href='rewrite.html'">
 
-            </a>
+            <div class="card-icon">✏️</div>
 
-            <a href="grammar.html" class="feature-card">
+            <h2>Rewrite Email</h2>
 
-                <div class="feature-icon">✅</div>
+            <p>
 
-                <h2>Grammar Check</h2>
+                Rewrite existing emails professionally.
 
-                <p>
-                    Fix grammar and spelling mistakes instantly.
-                </p>
+            </p>
 
-            </a>
+        </div>
 
-            <a href="tone.html" class="feature-card">
-                <div class="feature-icon">🎭</div>
-                <h2>Tone Change</h2>
-                <p>Change the tone of your email using AI.</p>
-            </a>
+        <!-- Grammar -->
 
-            <div class="feature-card disabled">
+        <div class="card"
+             onclick="window.location.href='grammar.html'">
 
-                <div class="feature-icon">📧</div>
+            <div class="card-icon">✅</div>
 
-                <h2>Compose Email</h2>
+            <h2>Grammar Check</h2>
 
-                <p>
-                    Coming Soon
-                </p>
+            <p>
 
-            </div>
+                Fix grammar and spelling mistakes instantly.
 
-            <div class="feature-card disabled">
+            </p>
 
-                <div class="feature-icon">📜</div>
+        </div>
 
-                <h2>Email History</h2>
+        <!-- Tone -->
 
-                <p>
-                    Coming Soon
-                </p>
+        <div class="card"
+             onclick="window.location.href='tone.html'">
 
-            </div>
+            <div class="card-icon">🎭</div>
 
-        </section>
+            <h2>Tone Change</h2>
+
+            <p>
+
+                Change the tone of your email using AI.
+
+            </p>
+
+        </div>
+
+        <!-- Compose -->
+
+        <div class="card"
+             onclick="window.location.href='compose.html'">
+
+            <div class="card-icon">📧</div>
+
+            <h2>Compose Email</h2>
+
+            <p>
+
+                Create complete emails from simple prompts.
+
+            </p>
+
+        </div>
+
+        <!-- History -->
+
+        <div class="card"
+             onclick="window.location.href='history.html'">
+
+            <div class="card-icon">📜</div>
+
+            <h2>Email History</h2>
+
+            <p>
+
+                View all emails generated by the AI assistant.
+
+            </p>
+
+        </div>
 
     </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-
-            © 2026 AI Email Assistant. All Rights Reserved.
-
-        </p>
-
-    </footer>
-
-    <script src="js/common.js"></script>
-    <script src="js/dashboard.js"></script>
 
 </body>
 

@@ -1,5 +1,6 @@
 from app.prompts.email_prompt import build_email_prompt
 from app.services.gemini_service import generate_content
+from app.services.history_service import save_history
 
 
 def generate_email(
@@ -16,4 +17,17 @@ def generate_email(
         purpose=purpose,
     )
 
-    return generate_content(prompt)
+    generated_email = generate_content(prompt)
+
+    save_history(
+        feature="Generate",
+        user_input=(
+            f"Email Type: {email_type}\n"
+            f"Recipient: {recipient}\n"
+            f"Tone: {tone}\n"
+            f"Purpose: {purpose}"
+        ),
+        ai_output=generated_email,
+    )
+
+    return generated_email

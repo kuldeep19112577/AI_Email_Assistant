@@ -1,15 +1,28 @@
 from app.prompts.rewrite_prompt import build_rewrite_prompt
 from app.services.gemini_service import generate_content
+from app.services.history_service import save_history
 
 
 def rewrite_email(
-    original_email: str,
-    instruction: str,
+    email: str,
 ):
 
     prompt = build_rewrite_prompt(
-        original_email=original_email,
-        instruction=instruction,
+
+        email=email,
+
     )
 
-    return generate_content(prompt)
+    rewritten_email = generate_content(prompt)
+
+    save_history(
+
+        feature="Rewrite",
+
+        user_input=email,
+
+        ai_output=rewritten_email,
+
+    )
+
+    return rewritten_email
