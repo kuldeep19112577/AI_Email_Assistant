@@ -17,164 +17,113 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-    <div class="logo">
-        AI Email Assistant
-    </div>
-
-    <ul class="nav-links">
-
-        <li><a href="index.html">Dashboard</a></li>
-
-        <li><a href="email.html">Generate</a></li>
-
-        <li><a href="rewrite.html">Rewrite</a></li>
-
-        <li><a href="grammar.html">Grammar</a></li>
-
-        <li><a href="tone.html" class="active">Tone</a></li>
-
-        <li><a href="compose.html">Compose</a></li>
-
-        <li><a href="history.html">History</a></li>
-
-    </ul>
-
-</nav>
-
     <!-- ================= PAGE ================= -->
 
     <main class="container">
 
         <h1 class="page-title">
-
-            🎭 Tone Change
-
+            <span>🎭</span> Tone Change
         </h1>
 
         <p class="page-subtitle">
-
             Change the tone of your email using Artificial Intelligence.
-
         </p>
 
-        <!-- ================= INPUT CARD ================= -->
+        <div class="split-layout">
 
-        <section class="card">
+            <!-- ================= INPUT CARD ================= -->
 
-            <h2 class="section-title">
+            <section class="card">
 
-                Tone Details
+                <h2 class="section-title">
+                    <span>📝</span> Tone Details
+                </h2>
 
-            </h2>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="tone">
+                        Select Tone
+                    </label>
 
-                <label for="tone">
+                    <select id="tone">
 
-                    Select Tone
+                        <option value="Professional">
+                            Professional
+                        </option>
 
-                </label>
+                        <option value="Friendly">
+                            Friendly
+                        </option>
 
-                <select id="tone">
+                        <option value="Formal">
+                            Formal
+                        </option>
 
-                    <option value="Professional">
-                        Professional
-                    </option>
+                        <option value="Casual">
+                            Casual
+                        </option>
 
-                    <option value="Friendly">
-                        Friendly
-                    </option>
+                        <option value="Polite">
+                            Polite
+                        </option>
 
-                    <option value="Formal">
-                        Formal
-                    </option>
+                        <option value="Confident">
+                            Confident
+                        </option>
 
-                    <option value="Casual">
-                        Casual
-                    </option>
+                    </select>
 
-                    <option value="Polite">
-                        Polite
-                    </option>
+                </div>
 
-                    <option value="Confident">
-                        Confident
-                    </option>
+                <div class="form-group">
 
-                </select>
+                    <label for="email">
+                        Original Email
+                    </label>
 
-            </div>
+                    <textarea
+                        id="email"
+                        placeholder="Paste your email here..."></textarea>
 
-            <div class="form-group">
-
-                <label for="email">
-
-                    Original Email
-
-                </label>
-
-                <textarea
-                    id="email"
-                    placeholder="Paste your email here..."></textarea>
-
-            </div>
-
-            <button
-                id="toneBtn"
-                class="btn">
-
-                Change Tone
-
-            </button>
-
-        </section>
-                <!-- ================= OUTPUT CARD ================= -->
-
-        <section class="card">
-
-            <h2 class="section-title">
-
-                Modified Email
-
-            </h2>
-
-            <textarea
-                id="modifiedEmail"
-                readonly
-                placeholder="Your modified email will appear here..."></textarea>
-
-            <div class="button-group">
+                </div>
 
                 <button
-                    id="copyBtn"
-                    class="btn"
-                    disabled>
-
-                    Copy Email
-
+                    id="toneBtn"
+                    class="btn">
+                    🎭 Change Tone
                 </button>
 
-            </div>
+            </section>
 
-        </section>
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Modified Email
+                </h2>
+
+                <textarea
+                    id="modifiedEmail"
+                    readonly
+                    placeholder="Your modified email will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Email
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-
-            © 2026 AI Email Assistant. All Rights Reserved.
-
-        </p>
-
-    </footer>
 
     <script src="js/Api.js"></script>
     <script src="js/common.js"></script>
@@ -183,6 +132,3 @@
 </body>
 
 </html>
-<li>
-    <a href="history.html">History</a>
-</li>

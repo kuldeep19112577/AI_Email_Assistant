@@ -10,39 +10,43 @@ const purpose = document.getElementById("purpose");
 
 const generatedEmail = document.getElementById("generatedEmail");
 
+function notify(message, type) {
+    if (window.Toast) {
+        Toast.show(message, type);
+    } else {
+        alert(message);
+    }
+}
+
+function setBusy(button, busy, idleLabel, busyLabel) {
+    button.disabled = busy;
+    if (busy) {
+        button.innerHTML = `<span class="loading-dots"><span></span><span></span><span></span></span> ${busyLabel}`;
+    } else {
+        button.textContent = idleLabel;
+    }
+}
 
 generateBtn.addEventListener("click", async () => {
 
     if (!recipient.value.trim()) {
-
-        alert("Please enter the recipient.");
-
+        notify("Please enter the recipient.", "error");
         return;
-
     }
 
     if (!purpose.value.trim()) {
-
-        alert("Please enter the purpose.");
-
+        notify("Please enter the purpose.", "error");
         return;
-
     }
 
     if (purpose.value.trim().length < 10) {
-
-        alert("Purpose should contain at least 10 characters.");
-
+        notify("Purpose should contain at least 10 characters.", "error");
         return;
-
     }
 
-    generateBtn.disabled = true;
-
-    generateBtn.innerText = "Generating...";
+    setBusy(generateBtn, true, "✨ Generate Email", "AI Thinking...");
 
     generatedEmail.value = "";
-
     copyBtn.disabled = true;
 
     try {
@@ -55,26 +59,19 @@ generateBtn.addEventListener("click", async () => {
         );
 
         generatedEmail.value = data.generated_email;
-
         copyBtn.disabled = false;
+        notify("Email generated!", "success");
 
     }
         catch (error) {
 
         console.error(error);
-
-        alert(
-            error.message || "Failed to generate email."
-        );
+        notify(error.message || "Failed to generate email.", "error");
 
     }
 
     finally {
-
-        generateBtn.disabled = false;
-
-        generateBtn.innerText = "Generate Email";
-
+        setBusy(generateBtn, false, "✨ Generate Email");
     }
 
 });
@@ -83,33 +80,24 @@ generateBtn.addEventListener("click", async () => {
 copyBtn.addEventListener("click", async () => {
 
     if (!generatedEmail.value.trim()) {
-
         return;
-
     }
 
     try {
 
-        await navigator.clipboard.writeText(
+        await navigator.clipboard.writeText(generatedEmail.value);
 
-            generatedEmail.value
-
-        );
-
-        copyBtn.innerText = "Copied!";
+        copyBtn.textContent = "Copied!";
+        notify("Copied to clipboard!", "success");
 
         setTimeout(() => {
-
-            copyBtn.innerText = "Copy Email";
-
+            copyBtn.textContent = "Copy Email";
         }, 2000);
 
     }
 
     catch (error) {
-
-        alert("Failed to copy email.");
-
+        notify("Failed to copy email.", "error");
     }
 
 });

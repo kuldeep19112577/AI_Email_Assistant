@@ -7,31 +7,38 @@ const instruction = document.getElementById("instruction");
 const originalEmail = document.getElementById("originalEmail");
 const rewrittenEmail = document.getElementById("rewrittenEmail");
 
+function notify(message, type) {
+    if (window.Toast) {
+        Toast.show(message, type);
+    } else {
+        alert(message);
+    }
+}
+
+function setBusy(button, busy, idleLabel, busyLabel) {
+    button.disabled = busy;
+    if (busy) {
+        button.innerHTML = `<span class="loading-dots"><span></span><span></span><span></span></span> ${busyLabel}`;
+    } else {
+        button.textContent = idleLabel;
+    }
+}
 
 rewriteBtn.addEventListener("click", async () => {
 
     if (!originalEmail.value.trim()) {
-
-        alert("Please enter the original email.");
-
+        notify("Please enter the original email.", "error");
         return;
-
     }
 
     if (originalEmail.value.trim().length < 10) {
-
-        alert("Email should contain at least 10 characters.");
-
+        notify("Email should contain at least 10 characters.", "error");
         return;
-
     }
 
-    rewriteBtn.disabled = true;
-
-    rewriteBtn.innerText = "Rewriting...";
+    setBusy(rewriteBtn, true, "✏️ Rewrite Email", "AI Thinking...");
 
     rewrittenEmail.value = "";
-
     copyBtn.disabled = true;
 
     try {
@@ -42,26 +49,19 @@ rewriteBtn.addEventListener("click", async () => {
         );
 
         rewrittenEmail.value = data.rewritten_email;
-
         copyBtn.disabled = false;
+        notify("Email rewritten!", "success");
 
     }
         catch (error) {
 
         console.error(error);
-
-        alert(
-            error.message || "Failed to rewrite email."
-        );
+        notify(error.message || "Failed to rewrite email.", "error");
 
     }
 
     finally {
-
-        rewriteBtn.disabled = false;
-
-        rewriteBtn.innerText = "Rewrite Email";
-
+        setBusy(rewriteBtn, false, "✏️ Rewrite Email");
     }
 
 });
@@ -70,33 +70,24 @@ rewriteBtn.addEventListener("click", async () => {
 copyBtn.addEventListener("click", async () => {
 
     if (!rewrittenEmail.value.trim()) {
-
         return;
-
     }
 
     try {
 
-        await navigator.clipboard.writeText(
+        await navigator.clipboard.writeText(rewrittenEmail.value);
 
-            rewrittenEmail.value
-
-        );
-
-        copyBtn.innerText = "Copied!";
+        copyBtn.textContent = "Copied!";
+        notify("Copied to clipboard!", "success");
 
         setTimeout(() => {
-
-            copyBtn.innerText = "Copy Email";
-
+            copyBtn.textContent = "Copy Email";
         }, 2000);
 
     }
 
     catch (error) {
-
-        alert("Failed to copy email.");
-
+        notify("Failed to copy email.", "error");
     }
 
 });

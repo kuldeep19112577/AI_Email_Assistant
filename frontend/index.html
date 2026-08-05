@@ -10,6 +10,7 @@
 
     <title>AI Email Assistant</title>
 
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
@@ -17,181 +18,131 @@
 <body>
 
     <!-- =======================
-         Navigation Bar
+         Dashboard Content
+         (sidebar + topbar are injected by common.js)
     ======================== -->
 
-    <nav class="navbar">
+    <main class="dashboard-content">
 
-        <div class="logo">
-            AI Email Assistant
-        </div>
+        <section class="welcome-banner">
 
-        <ul class="nav-links">
-
-            <li>
-                <a href="index.html">Dashboard</a>
-            </li>
-
-            <li>
-                <a href="email.html">Generate</a>
-            </li>
-
-            <li>
-                <a href="rewrite.html">Rewrite</a>
-            </li>
-
-            <li>
-                <a href="grammar.html">Grammar</a>
-            </li>
-
-            <li>
-                <a href="tone.html">Tone</a>
-            </li>
-
-            <li>
-                <a href="compose.html">Compose</a>
-            </li>
-
-            <li>
-                <a href="history.html">History</a>
-            </li>
-
-            <li>
-                <button id="logoutBtn" class="logout-btn">Logout</button>
-            </li>
-
-        </ul>
-
-    </nav>
-
-    <!-- =======================
-         Hero Section
-    ======================== -->
-
-    <section class="hero">
-
-        <h1>Welcome to AI Email Assistant</h1>
-
-        <p>
-
-            Generate, rewrite and improve professional emails
-            using Artificial Intelligence.
-
-        </p>
-
-    </section>
-
-    <!-- =======================
-         Dashboard Cards
-    ======================== -->
-
-    <main class="dashboard">
-
-        <!-- Generate -->
-
-        <div class="card"
-             onclick="window.location.href='email.html'">
-
-            <div class="card-icon">📝</div>
-
-            <h2>Generate Email</h2>
+            <h1>Welcome back, <span id="dashUserName">there</span> 👋</h1>
 
             <p>
-
-                Generate professional emails instantly using AI.
-
+                Generate, rewrite and improve professional emails
+                using Artificial Intelligence.
             </p>
 
-        </div>
+        </section>
 
-        <!-- Rewrite -->
+        <!-- ================= STATS ================= -->
 
-        <div class="card"
-             onclick="window.location.href='rewrite.html'">
+        <section class="stats-grid" id="statsGrid">
 
-            <div class="card-icon">✏️</div>
+            <div class="stat-card">
+                <div class="stat-icon">✨</div>
+                <div class="stat-value" id="statGenerate">–</div>
+                <div class="stat-label">Emails Generated</div>
+            </div>
 
-            <h2>Rewrite Email</h2>
+            <div class="stat-card">
+                <div class="stat-icon">✏️</div>
+                <div class="stat-value" id="statRewrite">–</div>
+                <div class="stat-label">Emails Rewritten</div>
+            </div>
 
-            <p>
+            <div class="stat-card">
+                <div class="stat-icon">✔️</div>
+                <div class="stat-value" id="statGrammar">–</div>
+                <div class="stat-label">Grammar Checks</div>
+            </div>
 
-                Rewrite existing emails professionally.
+            <div class="stat-card">
+                <div class="stat-icon">🎭</div>
+                <div class="stat-value" id="statTone">–</div>
+                <div class="stat-label">Tone Changes</div>
+            </div>
 
-            </p>
+            <div class="stat-card">
+                <div class="stat-icon">📧</div>
+                <div class="stat-value" id="statCompose">–</div>
+                <div class="stat-label">Emails Composed</div>
+            </div>
 
-        </div>
+        </section>
 
-        <!-- Grammar -->
+        <!-- ================= QUICK ACTIONS ================= -->
 
-        <div class="card"
-             onclick="window.location.href='grammar.html'">
+        <section class="quick-actions">
 
-            <div class="card-icon">✅</div>
+            <h2 class="content-section-title">Quick Actions</h2>
 
-            <h2>Grammar Check</h2>
+            <div class="action-grid">
 
-            <p>
+                <a class="action-card" href="email.html">
+                    <div class="action-icon">✨</div>
+                    <h3>Generate Email</h3>
+                    <p>Generate professional emails instantly using AI.</p>
+                    <span class="action-arrow">Generate →</span>
+                </a>
 
-                Fix grammar and spelling mistakes instantly.
+                <a class="action-card" href="rewrite.html">
+                    <div class="action-icon">✏️</div>
+                    <h3>Rewrite Email</h3>
+                    <p>Rewrite existing emails professionally.</p>
+                    <span class="action-arrow">Rewrite →</span>
+                </a>
 
-            </p>
+                <a class="action-card" href="grammar.html">
+                    <div class="action-icon">✔️</div>
+                    <h3>Grammar Check</h3>
+                    <p>Fix grammar and spelling mistakes instantly.</p>
+                    <span class="action-arrow">Check →</span>
+                </a>
 
-        </div>
+                <a class="action-card" href="tone.html">
+                    <div class="action-icon">🎭</div>
+                    <h3>Tone Change</h3>
+                    <p>Change the tone of your email using AI.</p>
+                    <span class="action-arrow">Adjust →</span>
+                </a>
 
-        <!-- Tone -->
+                <a class="action-card" href="compose.html">
+                    <div class="action-icon">📧</div>
+                    <h3>Compose Email</h3>
+                    <p>Create complete emails from simple prompts.</p>
+                    <span class="action-arrow">Compose →</span>
+                </a>
 
-        <div class="card"
-             onclick="window.location.href='tone.html'">
+                <a class="action-card" href="history.html">
+                    <div class="action-icon">📜</div>
+                    <h3>Email History</h3>
+                    <p>View all emails generated by the AI assistant.</p>
+                    <span class="action-arrow">View →</span>
+                </a>
 
-            <div class="card-icon">🎭</div>
+            </div>
 
-            <h2>Tone Change</h2>
+        </section>
 
-            <p>
+        <!-- ================= RECENT ACTIVITY ================= -->
 
-                Change the tone of your email using AI.
+        <section class="recent-activity">
 
-            </p>
+            <h2 class="content-section-title">Recent Activity</h2>
 
-        </div>
+            <div id="recentActivityList" class="activity-list">
+                <div class="activity-skeleton shimmer"></div>
+                <div class="activity-skeleton shimmer"></div>
+                <div class="activity-skeleton shimmer"></div>
+            </div>
 
-        <!-- Compose -->
-
-        <div class="card"
-             onclick="window.location.href='compose.html'">
-
-            <div class="card-icon">📧</div>
-
-            <h2>Compose Email</h2>
-
-            <p>
-
-                Create complete emails from simple prompts.
-
-            </p>
-
-        </div>
-
-        <!-- History -->
-
-        <div class="card"
-             onclick="window.location.href='history.html'">
-
-            <div class="card-icon">📜</div>
-
-            <h2>Email History</h2>
-
-            <p>
-
-                View all emails generated by the AI assistant.
-
-            </p>
-
-        </div>
+        </section>
 
     </main>
 
     <script src="js/Api.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/dashboard.js"></script>
 
 </body>

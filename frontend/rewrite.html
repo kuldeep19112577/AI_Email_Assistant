@@ -18,164 +18,113 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-    <div class="logo">
-        AI Email Assistant
-    </div>
-
-    <ul class="nav-links">
-
-        <li><a href="index.html">Dashboard</a></li>
-
-        <li><a href="email.html">Generate</a></li>
-
-        <li><a href="rewrite.html" class="active">Rewrite</a></li>
-
-        <li><a href="grammar.html">Grammar</a></li>
-
-        <li><a href="tone.html">Tone</a></li>
-
-        <li><a href="compose.html">Compose</a></li>
-
-        <li><a href="history.html">History</a></li>
-
-    </ul>
-
-</nav>
-
     <!-- ================= PAGE ================= -->
 
     <main class="container">
 
         <h1 class="page-title">
-
-            ✏ Rewrite Email
-
+            <span>✏️</span> Rewrite Email
         </h1>
 
         <p class="page-subtitle">
-
-            Rewrite your email professionally using AI.
-
+            Paste an email and let AI rewrite it professionally.
         </p>
 
-        <!-- ================= INPUT CARD ================= -->
+        <div class="split-layout">
 
-        <section class="card">
+            <!-- ================= INPUT CARD ================= -->
 
-            <h2 class="section-title">
+            <section class="card">
 
-                Rewrite Details
+                <h2 class="section-title">
+                    <span>📝</span> Rewrite Details
+                </h2>
 
-            </h2>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="instruction">
+                        Rewrite Instruction
+                    </label>
 
-                <label for="instruction">
+                    <select id="instruction">
 
-                    Rewrite Instruction
+                        <option value="Professional">
+                            Professional
+                        </option>
 
-                </label>
+                        <option value="Friendly">
+                            Friendly
+                        </option>
 
-                <select id="instruction">
+                        <option value="Formal">
+                            Formal
+                        </option>
 
-                    <option value="Professional">
-                        Professional
-                    </option>
+                        <option value="Shorter">
+                            Shorter
+                        </option>
 
-                    <option value="Friendly">
-                        Friendly
-                    </option>
+                        <option value="More Polite">
+                            More Polite
+                        </option>
 
-                    <option value="Formal">
-                        Formal
-                    </option>
+                        <option value="More Confident">
+                            More Confident
+                        </option>
 
-                    <option value="Shorter">
-                        Shorter
-                    </option>
+                    </select>
 
-                    <option value="More Polite">
-                        More Polite
-                    </option>
+                </div>
 
-                    <option value="More Confident">
-                        More Confident
-                    </option>
+                <div class="form-group">
 
-                </select>
+                    <label for="originalEmail">
+                        Original Email
+                    </label>
 
-            </div>
+                    <textarea
+                        id="originalEmail"
+                        placeholder="Paste your email here..."></textarea>
 
-            <div class="form-group">
-
-                <label for="originalEmail">
-
-                    Original Email
-
-                </label>
-
-                <textarea
-                    id="originalEmail"
-                    placeholder="Paste your email here..."></textarea>
-
-            </div>
-
-            <button
-                id="rewriteBtn"
-                class="btn">
-
-                Rewrite Email
-
-            </button>
-
-        </section>
-                <!-- ================= OUTPUT CARD ================= -->
-
-        <section class="card">
-
-            <h2 class="section-title">
-
-                Rewritten Email
-
-            </h2>
-
-            <textarea
-                id="rewrittenEmail"
-                readonly
-                placeholder="Your rewritten email will appear here..."></textarea>
-
-            <div class="button-group">
+                </div>
 
                 <button
-                    id="copyBtn"
-                    class="btn"
-                    disabled>
-
-                    Copy Email
-
+                    id="rewriteBtn"
+                    class="btn">
+                    ✏️ Rewrite Email
                 </button>
 
-            </div>
+            </section>
 
-        </section>
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Rewritten Email
+                </h2>
+
+                <textarea
+                    id="rewrittenEmail"
+                    readonly
+                    placeholder="Your rewritten email will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Email
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-
-            © 2026 AI Email Assistant. All Rights Reserved.
-
-        </p>
-
-    </footer>
 
     <script src="js/Api.js"></script>
     <script src="js/common.js"></script>
@@ -184,6 +133,3 @@
 </body>
 
 </html>
-<li>
-    <a href="history.html">History</a>
-</li>

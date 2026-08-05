@@ -6,31 +6,38 @@ const copyBtn = document.getElementById("copyBtn");
 const prompt = document.getElementById("prompt");
 const generatedEmail = document.getElementById("generatedEmail");
 
+function notify(message, type) {
+    if (window.Toast) {
+        Toast.show(message, type);
+    } else {
+        alert(message);
+    }
+}
+
+function setBusy(button, busy, idleLabel, busyLabel) {
+    button.disabled = busy;
+    if (busy) {
+        button.innerHTML = `<span class="loading-dots"><span></span><span></span><span></span></span> ${busyLabel}`;
+    } else {
+        button.textContent = idleLabel;
+    }
+}
 
 composeBtn.addEventListener("click", async () => {
 
     if (!prompt.value.trim()) {
-
-        alert("Please describe your requirement.");
-
+        notify("Please describe your requirement.", "error");
         return;
-
     }
 
     if (prompt.value.trim().length < 10) {
-
-        alert("Please enter at least 10 characters.");
-
+        notify("Please enter at least 10 characters.", "error");
         return;
-
     }
 
-    composeBtn.disabled = true;
-
-    composeBtn.innerText = "Composing...";
+    setBusy(composeBtn, true, "📧 Compose Email", "AI Thinking...");
 
     generatedEmail.value = "";
-
     copyBtn.disabled = true;
 
     try {
@@ -38,26 +45,19 @@ composeBtn.addEventListener("click", async () => {
         const data = await Api.composeEmail(prompt.value);
 
         generatedEmail.value = data.email;
-
         copyBtn.disabled = false;
+        notify("Email composed!", "success");
 
     }
         catch (error) {
 
         console.error(error);
-
-        alert(
-            error.message || "Failed to compose email."
-        );
+        notify(error.message || "Failed to compose email.", "error");
 
     }
 
     finally {
-
-        composeBtn.disabled = false;
-
-        composeBtn.innerText = "Compose Email";
-
+        setBusy(composeBtn, false, "📧 Compose Email");
     }
 
 });
@@ -66,33 +66,24 @@ composeBtn.addEventListener("click", async () => {
 copyBtn.addEventListener("click", async () => {
 
     if (!generatedEmail.value.trim()) {
-
         return;
-
     }
 
     try {
 
-        await navigator.clipboard.writeText(
+        await navigator.clipboard.writeText(generatedEmail.value);
 
-            generatedEmail.value
-
-        );
-
-        copyBtn.innerText = "Copied!";
+        copyBtn.textContent = "Copied!";
+        notify("Copied to clipboard!", "success");
 
         setTimeout(() => {
-
-            copyBtn.innerText = "Copy Email";
-
+            copyBtn.textContent = "Copy Email";
         }, 2000);
 
     }
 
     catch (error) {
-
-        alert("Failed to copy email.");
-
+        notify("Failed to copy email.", "error");
     }
 
 });

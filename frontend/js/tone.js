@@ -7,31 +7,38 @@ const tone = document.getElementById("tone");
 const email = document.getElementById("email");
 const modifiedEmail = document.getElementById("modifiedEmail");
 
+function notify(message, type) {
+    if (window.Toast) {
+        Toast.show(message, type);
+    } else {
+        alert(message);
+    }
+}
+
+function setBusy(button, busy, idleLabel, busyLabel) {
+    button.disabled = busy;
+    if (busy) {
+        button.innerHTML = `<span class="loading-dots"><span></span><span></span><span></span></span> ${busyLabel}`;
+    } else {
+        button.textContent = idleLabel;
+    }
+}
 
 toneBtn.addEventListener("click", async () => {
 
     if (!email.value.trim()) {
-
-        alert("Please enter an email.");
-
+        notify("Please enter an email.", "error");
         return;
-
     }
 
     if (email.value.trim().length < 10) {
-
-        alert("Email should contain at least 10 characters.");
-
+        notify("Email should contain at least 10 characters.", "error");
         return;
-
     }
 
-    toneBtn.disabled = true;
-
-    toneBtn.innerText = "Changing...";
+    setBusy(toneBtn, true, "🎭 Change Tone", "AI Thinking...");
 
     modifiedEmail.value = "";
-
     copyBtn.disabled = true;
 
     try {
@@ -39,26 +46,19 @@ toneBtn.addEventListener("click", async () => {
         const data = await Api.changeTone(email.value, tone.value);
 
         modifiedEmail.value = data.modified_email;
-
         copyBtn.disabled = false;
+        notify("Tone updated!", "success");
 
     }
         catch (error) {
 
         console.error(error);
-
-        alert(
-            error.message || "Failed to change tone."
-        );
+        notify(error.message || "Failed to change tone.", "error");
 
     }
 
     finally {
-
-        toneBtn.disabled = false;
-
-        toneBtn.innerText = "Change Tone";
-
+        setBusy(toneBtn, false, "🎭 Change Tone");
     }
 
 });
@@ -67,33 +67,24 @@ toneBtn.addEventListener("click", async () => {
 copyBtn.addEventListener("click", async () => {
 
     if (!modifiedEmail.value.trim()) {
-
         return;
-
     }
 
     try {
 
-        await navigator.clipboard.writeText(
+        await navigator.clipboard.writeText(modifiedEmail.value);
 
-            modifiedEmail.value
-
-        );
-
-        copyBtn.innerText = "Copied!";
+        copyBtn.textContent = "Copied!";
+        notify("Copied to clipboard!", "success");
 
         setTimeout(() => {
-
-            copyBtn.innerText = "Copy Email";
-
+            copyBtn.textContent = "Copy Email";
         }, 2000);
 
     }
 
     catch (error) {
-
-        alert("Failed to copy email.");
-
+        notify("Failed to copy email.", "error");
     }
 
 });

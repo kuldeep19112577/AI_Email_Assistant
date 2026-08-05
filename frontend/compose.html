@@ -18,127 +18,77 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-    <div class="logo">
-        AI Email Assistant
-    </div>
-
-    <ul class="nav-links">
-
-        <li><a href="index.html">Dashboard</a></li>
-
-        <li><a href="email.html">Generate</a></li>
-
-        <li><a href="rewrite.html">Rewrite</a></li>
-
-        <li><a href="grammar.html">Grammar</a></li>
-
-        <li><a href="tone.html">Tone</a></li>
-
-        <li><a href="compose.html" class="active">Compose</a></li>
-
-        <li><a href="history.html">History</a></li>
-
-    </ul>
-
-</nav>
-
     <!-- ================= PAGE ================= -->
 
     <main class="container">
 
         <h1 class="page-title">
-
-            ✍️ Compose Email
-
+            <span>📧</span> Compose Email
         </h1>
 
         <p class="page-subtitle">
-
             Describe your requirement and let AI generate a complete email.
-
         </p>
 
-        <!-- ================= INPUT CARD ================= -->
+        <div class="split-layout">
 
-        <section class="card">
+            <!-- ================= INPUT CARD ================= -->
 
-            <h2 class="section-title">
+            <section class="card">
 
-                Compose Details
+                <h2 class="section-title">
+                    <span>📝</span> Compose Details
+                </h2>
 
-            </h2>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="prompt">
+                        Describe Your Requirement
+                    </label>
 
-                <label for="prompt">
+                    <textarea
+                        id="prompt"
+                        placeholder="Example: Write an email to my manager requesting leave tomorrow because I have a fever."></textarea>
 
-                    Describe Your Requirement
-
-                </label>
-
-                <textarea
-                    id="prompt"
-                    placeholder="Example: Write an email to my manager requesting leave tomorrow because I have a fever."></textarea>
-
-            </div>
-
-            <button
-                id="composeBtn"
-                class="btn">
-
-                Compose Email
-
-            </button>
-
-        </section>
-
-        <!-- ================= OUTPUT CARD ================= -->
-
-        <section class="card">
-
-            <h2 class="section-title">
-
-                Generated Email
-
-            </h2>
-
-            <textarea
-                id="generatedEmail"
-                readonly
-                placeholder="Your generated email will appear here..."></textarea>
-
-            <div class="button-group">
+                </div>
 
                 <button
-                    id="copyBtn"
-                    class="btn"
-                    disabled>
-
-                    Copy Email
-
+                    id="composeBtn"
+                    class="btn">
+                    📧 Compose Email
                 </button>
 
-            </div>
+            </section>
 
-        </section>
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Generated Email
+                </h2>
+
+                <textarea
+                    id="generatedEmail"
+                    readonly
+                    placeholder="Your generated email will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Email
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-
-            © 2026 AI Email Assistant. All Rights Reserved.
-
-        </p>
-
-    </footer>
 
     <script src="js/Api.js"></script>
     <script src="js/common.js"></script>
@@ -147,6 +97,3 @@
 </body>
 
 </html>
-<li>
-    <a href="history.html">History</a>
-</li>

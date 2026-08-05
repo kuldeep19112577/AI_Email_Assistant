@@ -18,126 +18,77 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-    <div class="logo">
-        AI Email Assistant
-    </div>
-
-    <ul class="nav-links">
-
-        <li><a href="index.html">Dashboard</a></li>
-
-        <li><a href="email.html">Generate</a></li>
-
-        <li><a href="rewrite.html">Rewrite</a></li>
-
-        <li><a href="grammar.html" class="active">Grammar</a></li>
-
-        <li><a href="tone.html">Tone</a></li>
-
-        <li><a href="compose.html">Compose</a></li>
-
-        <li><a href="history.html">History</a></li>
-
-    </ul>
-
-</nav>
-
     <!-- ================= PAGE ================= -->
 
     <main class="container">
 
         <h1 class="page-title">
-
-            ✅ Grammar Check
-
+            <span>✔️</span> Grammar Check
         </h1>
 
         <p class="page-subtitle">
-
             Correct grammar, spelling and punctuation using AI.
-
         </p>
 
-        <!-- ================= INPUT CARD ================= -->
+        <div class="split-layout">
 
-        <section class="card">
+            <!-- ================= INPUT CARD ================= -->
 
-            <h2 class="section-title">
+            <section class="card">
 
-                Enter Text
+                <h2 class="section-title">
+                    <span>📝</span> Enter Text
+                </h2>
 
-            </h2>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="inputText">
+                        Email / Text
+                    </label>
 
-                <label for="inputText">
+                    <textarea
+                        id="inputText"
+                        placeholder="Paste your email or text here..."></textarea>
 
-                    Email / Text
-
-                </label>
-
-                <textarea
-                    id="inputText"
-                    placeholder="Paste your email or text here..."></textarea>
-
-            </div>
-
-            <button
-                id="grammarBtn"
-                class="btn">
-
-                Check Grammar
-
-            </button>
-
-        </section>
-                <!-- ================= OUTPUT CARD ================= -->
-
-        <section class="card">
-
-            <h2 class="section-title">
-
-                Corrected Text
-
-            </h2>
-
-            <textarea
-                id="correctedText"
-                readonly
-                placeholder="Corrected text will appear here..."></textarea>
-
-            <div class="button-group">
+                </div>
 
                 <button
-                    id="copyBtn"
-                    class="btn"
-                    disabled>
-
-                    Copy Text
-
+                    id="grammarBtn"
+                    class="btn">
+                    ✔️ Check Grammar
                 </button>
 
-            </div>
+            </section>
 
-        </section>
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Corrected Text
+                </h2>
+
+                <textarea
+                    id="correctedText"
+                    readonly
+                    placeholder="Corrected text will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Text
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-
-            © 2026 AI Email Assistant. All Rights Reserved.
-
-        </p>
-
-    </footer>
 
     <script src="js/Api.js"></script>
     <script src="js/common.js"></script>
@@ -146,6 +97,3 @@
 </body>
 
 </html>
-<li>
-    <a href="history.html">History</a>
-</li>

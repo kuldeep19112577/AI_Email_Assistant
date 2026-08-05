@@ -6,31 +6,38 @@ const copyBtn = document.getElementById("copyBtn");
 const inputText = document.getElementById("inputText");
 const correctedText = document.getElementById("correctedText");
 
+function notify(message, type) {
+    if (window.Toast) {
+        Toast.show(message, type);
+    } else {
+        alert(message);
+    }
+}
+
+function setBusy(button, busy, idleLabel, busyLabel) {
+    button.disabled = busy;
+    if (busy) {
+        button.innerHTML = `<span class="loading-dots"><span></span><span></span><span></span></span> ${busyLabel}`;
+    } else {
+        button.textContent = idleLabel;
+    }
+}
 
 grammarBtn.addEventListener("click", async () => {
 
     if (!inputText.value.trim()) {
-
-        alert("Please enter some text.");
-
+        notify("Please enter some text.", "error");
         return;
-
     }
 
     if (inputText.value.trim().length < 10) {
-
-        alert("Text should contain at least 10 characters.");
-
+        notify("Text should contain at least 10 characters.", "error");
         return;
-
     }
 
-    grammarBtn.disabled = true;
-
-    grammarBtn.innerText = "Checking...";
+    setBusy(grammarBtn, true, "✔️ Check Grammar", "AI Thinking...");
 
     correctedText.value = "";
-
     copyBtn.disabled = true;
 
     try {
@@ -38,26 +45,19 @@ grammarBtn.addEventListener("click", async () => {
         const data = await Api.checkGrammar(inputText.value);
 
         correctedText.value = data.corrected_text;
-
         copyBtn.disabled = false;
+        notify("Grammar checked!", "success");
 
     }
         catch (error) {
 
         console.error(error);
-
-        alert(
-            error.message || "Failed to check grammar."
-        );
+        notify(error.message || "Failed to check grammar.", "error");
 
     }
 
     finally {
-
-        grammarBtn.disabled = false;
-
-        grammarBtn.innerText = "Check Grammar";
-
+        setBusy(grammarBtn, false, "✔️ Check Grammar");
     }
 
 });
@@ -66,33 +66,24 @@ grammarBtn.addEventListener("click", async () => {
 copyBtn.addEventListener("click", async () => {
 
     if (!correctedText.value.trim()) {
-
         return;
-
     }
 
     try {
 
-        await navigator.clipboard.writeText(
+        await navigator.clipboard.writeText(correctedText.value);
 
-            correctedText.value
-
-        );
-
-        copyBtn.innerText = "Copied!";
+        copyBtn.textContent = "Copied!";
+        notify("Copied to clipboard!", "success");
 
         setTimeout(() => {
-
-            copyBtn.innerText = "Copy Text";
-
+            copyBtn.textContent = "Copy Text";
         }, 2000);
 
     }
 
     catch (error) {
-
-        alert("Failed to copy text.");
-
+        notify("Failed to copy text.", "error");
     }
 
 });

@@ -18,249 +18,159 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-    <div class="logo">
-        AI Email Assistant
-    </div>
-
-    <ul class="nav-links">
-
-        <li>
-            <a href="index.html">Dashboard</a>
-        </li>
-
-        <li>
-            <a href="email.html" class="active">Generate</a>
-        </li>
-
-        <li>
-            <a href="rewrite.html">Rewrite</a>
-        </li>
-
-        <li>
-            <a href="grammar.html">Grammar</a>
-        </li>
-
-        <li>
-            <a href="tone.html">Tone</a>
-        </li>
-
-        <li>
-            <a href="compose.html">Compose</a>
-        </li>
-
-        <li>
-            <a href="history.html">History</a>
-        </li>
-
-    </ul>
-
-</nav>
-
     <!-- ================= PAGE ================= -->
+    <!-- (sidebar + topbar are injected by common.js) -->
 
     <main class="container">
 
         <h1 class="page-title">
-
-            📝 Generate Email
-
+            <span>✨</span> Generate Email
         </h1>
 
         <p class="page-subtitle">
-
-            Generate professional emails using Artificial Intelligence.
-
+            Describe what you need — the AI will draft a ready-to-send email.
         </p>
 
-        <!-- ================= INPUT CARD ================= -->
+        <div class="split-layout">
 
-        <section class="card">
+            <!-- ================= INPUT CARD ================= -->
 
-            <h2 class="section-title">
+            <section class="card">
 
-                Email Details
+                <h2 class="section-title">
+                    <span>📝</span> Email Details
+                </h2>
 
-            </h2>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="emailType">
+                        Email Type
+                    </label>
 
-                <label for="emailType">
+                    <select id="emailType">
 
-                    Email Type
+                        <option value="Formal">
+                            Formal
+                        </option>
 
-                </label>
+                        <option value="Informal">
+                            Informal
+                        </option>
 
-                <select id="emailType">
+                        <option value="Business">
+                            Business
+                        </option>
 
-                    <option value="Formal">
+                        <option value="Leave Request">
+                            Leave Request
+                        </option>
 
-                        Formal
+                        <option value="Meeting Request">
+                            Meeting Request
+                        </option>
 
-                    </option>
+                        <option value="Apology">
+                            Apology
+                        </option>
 
-                    <option value="Informal">
+                    </select>
 
-                        Informal
+                </div>
 
-                    </option>
+                <div class="form-group">
 
-                    <option value="Business">
+                    <label for="recipient">
+                        Recipient
+                    </label>
 
-                        Business
+                    <input
+                        type="text"
+                        id="recipient"
+                        placeholder="Example: HR Manager">
 
-                    </option>
+                </div>
 
-                    <option value="Leave Request">
+                <div class="form-group">
 
-                        Leave Request
+                    <label for="tone">
+                        Tone
+                    </label>
 
-                    </option>
+                    <select id="tone">
 
-                    <option value="Meeting Request">
+                        <option value="Professional">
+                            Professional
+                        </option>
 
-                        Meeting Request
+                        <option value="Friendly">
+                            Friendly
+                        </option>
 
-                    </option>
+                        <option value="Formal">
+                            Formal
+                        </option>
 
-                    <option value="Apology">
+                        <option value="Polite">
+                            Polite
+                        </option>
 
-                        Apology
+                        <option value="Confident">
+                            Confident
+                        </option>
 
-                    </option>
+                    </select>
 
-                </select>
+                </div>
 
-            </div>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="purpose">
+                        Purpose
+                    </label>
 
-                <label for="recipient">
+                    <textarea
+                        id="purpose"
+                        placeholder="Describe why you want to send this email..."></textarea>
 
-                    Recipient
-
-                </label>
-
-                <input
-                    type="text"
-                    id="recipient"
-                    placeholder="Example: HR Manager">
-
-            </div>
-
-            <div class="form-group">
-
-                <label for="tone">
-
-                    Tone
-
-                </label>
-
-                <select id="tone">
-
-                    <option value="Professional">
-
-                        Professional
-
-                    </option>
-
-                    <option value="Friendly">
-
-                        Friendly
-
-                    </option>
-
-                    <option value="Formal">
-
-                        Formal
-
-                    </option>
-
-                    <option value="Polite">
-
-                        Polite
-
-                    </option>
-
-                    <option value="Confident">
-
-                        Confident
-
-                    </option>
-
-                </select>
-
-            </div>
-                        <div class="form-group">
-
-                <label for="purpose">
-
-                    Purpose
-
-                </label>
-
-                <textarea
-                    id="purpose"
-                    placeholder="Describe why you want to send this email..."></textarea>
-
-            </div>
-
-            <button
-                id="generateBtn"
-                class="btn">
-
-                Generate Email
-
-            </button>
-
-        </section>
-
-        <!-- ================= OUTPUT CARD ================= -->
-
-        <section class="card">
-
-            <h2 class="section-title">
-
-                Generated Email
-
-            </h2>
-
-            <textarea
-                id="generatedEmail"
-                readonly
-                placeholder="Your generated email will appear here..."></textarea>
-
-            <div class="button-group">
+                </div>
 
                 <button
-                    id="copyBtn"
-                    class="btn"
-                    disabled>
-
-                    Copy Email
-
+                    id="generateBtn"
+                    class="btn">
+                    ✨ Generate Email
                 </button>
 
-            </div>
+            </section>
 
-        </section>
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Generated Email
+                </h2>
+
+                <textarea
+                    id="generatedEmail"
+                    readonly
+                    placeholder="Your generated email will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Email
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-
-            © 2026 AI Email Assistant. All Rights Reserved.
-
-        </p>
-
-    </footer>
 
     <script src="js/Api.js"></script>
     <script src="js/common.js"></script>
@@ -269,6 +179,3 @@
 </body>
 
 </html>
-<li>
-    <a href="history.html">History</a>
-</li>
