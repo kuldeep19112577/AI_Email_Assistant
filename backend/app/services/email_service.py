@@ -4,6 +4,7 @@ from app.services.history_service import save_history
 
 
 def generate_email(
+    user_id: int,
     email_type: str,
     recipient: str,
     tone: str,
@@ -20,6 +21,7 @@ def generate_email(
     generated_email = generate_content(prompt)
 
     save_history(
+        user_id=user_id,
         feature="Generate",
         user_input=(
             f"Email Type: {email_type}\n"

@@ -1,3 +1,5 @@
+Api.requireAuth();
+
 const toneBtn = document.getElementById("toneBtn");
 const copyBtn = document.getElementById("copyBtn");
 
@@ -34,39 +36,7 @@ toneBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch(
-
-            "http://127.0.0.1:8000/tone/",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
-
-                body: JSON.stringify({
-
-                    email: email.value,
-
-                    tone: tone.value
-
-                })
-
-            }
-
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(data.detail);
-
-        }
+        const data = await Api.changeTone(email.value, tone.value);
 
         modifiedEmail.value = data.modified_email;
 

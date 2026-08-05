@@ -1,5 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
+from app.database.models import User
+from app.dependencies import get_current_user
 from app.schemas.tone import ToneRequest, ToneResponse
 from app.services.tone_service import change_tone
 
@@ -13,11 +15,15 @@ router = APIRouter(
     "/",
     response_model=ToneResponse
 )
-def change_tone_api(request: ToneRequest):
+def change_tone_api(
+    request: ToneRequest,
+    current_user: User = Depends(get_current_user),
+):
 
     try:
 
         modified_email = change_tone(
+            user_id=current_user.id,
             email=request.email,
             tone=request.tone,
         )

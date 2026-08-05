@@ -1,3 +1,5 @@
+Api.requireAuth();
+
 const rewriteBtn = document.getElementById("rewriteBtn");
 const copyBtn = document.getElementById("copyBtn");
 
@@ -34,39 +36,10 @@ rewriteBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch(
-
-            "http://127.0.0.1:8000/rewrite/",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
-
-                body: JSON.stringify({
-
-                    original_email: originalEmail.value,
-
-                    instruction: instruction.value
-
-                })
-
-            }
-
+        const data = await Api.rewriteEmail(
+            originalEmail.value,
+            instruction.value
         );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(data.detail);
-
-        }
 
         rewrittenEmail.value = data.rewritten_email;
 

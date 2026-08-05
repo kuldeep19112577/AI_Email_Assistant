@@ -159,29 +159,32 @@
         return;
       }
 
-      const payload = {
-        fullName: fullName.value.trim(),
-        email: email.value.trim(),
-        password: password.value,
-      };
-
-      // TODO: replace with a real API call (api.js -> POST /api/auth/signup)
-      // once the backend endpoint exists.
-      console.log('Signup submitted:', payload);
-
       submitBtn.classList.add('is-loading');
       submitBtn.disabled = true;
 
-      setTimeout(function () {
-        submitBtn.classList.remove('is-loading');
-        submitBtn.disabled = false;
-        status.style.color = 'var(--success)';
-        status.textContent = 'Account created! (demo only — no backend connected yet)';
-        form.reset();
-        updateStrengthMeter('');
-      }, 900);
+      Api.signup(fullName.value.trim(), email.value.trim(), password.value)
+        .then(function () {
+          status.style.color = 'var(--success)';
+          status.textContent = 'Account created! Redirecting to login…';
+          form.reset();
+          updateStrengthMeter('');
+          setTimeout(function () {
+            window.location.href = 'login.html';
+          }, 900);
+        })
+        .catch(function (error) {
+          status.style.color = 'var(--danger)';
+          status.textContent = error.message || 'Could not create account.';
+        })
+        .finally(function () {
+          submitBtn.classList.remove('is-loading');
+          submitBtn.disabled = false;
+        });
     });
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', function () {
+    Api.redirectIfAuthenticated();
+    init();
+  });
 })();

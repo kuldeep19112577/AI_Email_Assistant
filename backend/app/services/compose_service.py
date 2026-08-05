@@ -4,6 +4,7 @@ from app.services.history_service import save_history
 
 
 def compose_email(
+    user_id: int,
     prompt: str,
 ):
 
@@ -16,6 +17,7 @@ def compose_email(
     )
 
     save_history(
+        user_id=user_id,
         feature="Compose",
         user_input=prompt,
         ai_output=generated_email,

@@ -4,18 +4,21 @@ from app.services.history_service import save_history
 
 
 def check_grammar(
+    user_id: int,
     email: str,
 ):
 
     prompt = build_grammar_prompt(
 
-        email=email,
+        text=email,
 
     )
 
     corrected_email = generate_content(prompt)
 
     save_history(
+
+        user_id=user_id,
 
         feature="Grammar",
 

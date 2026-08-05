@@ -48,12 +48,15 @@ def create_user(
 
 def create_email_history(
     db: Session,
+    user_id: int,
     feature: str,
     user_input: str,
     ai_output: str,
 ):
 
     history = EmailHistory(
+
+        user_id=user_id,
 
         feature=feature,
 
@@ -74,11 +77,14 @@ def create_email_history(
 
 def get_all_email_history(
     db: Session,
+    user_id: int,
 ):
 
     return (
 
         db.query(EmailHistory)
+
+        .filter(EmailHistory.user_id == user_id)
 
         .order_by(
             EmailHistory.created_at.desc()

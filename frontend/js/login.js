@@ -87,26 +87,28 @@
         return;
       }
 
-      const payload = {
-        email: email.value.trim(),
-        password: password.value,
-      };
-
-      // TODO: replace with a real API call (api.js -> POST /api/auth/login)
-      // once the backend auth endpoint exists.
-      console.log('Login submitted:', payload);
-
       submitBtn.classList.add('is-loading');
       submitBtn.disabled = true;
 
-      setTimeout(function () {
-        submitBtn.classList.remove('is-loading');
-        submitBtn.disabled = false;
-        status.style.color = 'var(--success)';
-        status.textContent = 'Logged in! (demo only — no backend connected yet)';
-      }, 900);
+      Api.login(email.value.trim(), password.value)
+        .then(function () {
+          status.style.color = 'var(--success)';
+          status.textContent = 'Logged in! Redirecting…';
+          window.location.href = 'index.html';
+        })
+        .catch(function (error) {
+          status.style.color = 'var(--danger)';
+          status.textContent = error.message || 'Invalid email or password.';
+        })
+        .finally(function () {
+          submitBtn.classList.remove('is-loading');
+          submitBtn.disabled = false;
+        });
     });
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', function () {
+    Api.redirectIfAuthenticated();
+    init();
+  });
 })();

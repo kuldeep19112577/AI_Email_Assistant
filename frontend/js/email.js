@@ -1,3 +1,5 @@
+Api.requireAuth();
+
 const generateBtn = document.getElementById("generateBtn");
 const copyBtn = document.getElementById("copyBtn");
 
@@ -45,43 +47,12 @@ generateBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch(
-
-            "http://127.0.0.1:8000/email/generate",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
-
-                body: JSON.stringify({
-
-                    email_type: emailType.value,
-
-                    recipient: recipient.value,
-
-                    tone: tone.value,
-
-                    purpose: purpose.value
-
-                })
-
-            }
-
+        const data = await Api.generateEmail(
+            emailType.value,
+            recipient.value,
+            tone.value,
+            purpose.value
         );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(data.detail);
-
-        }
 
         generatedEmail.value = data.generated_email;
 

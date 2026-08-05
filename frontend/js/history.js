@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/history/";
+Api.requireAuth();
 
 const historyContainer = document.getElementById("historyContainer");
 
@@ -7,9 +7,7 @@ async function loadHistory() {
 
     try {
 
-        const response = await fetch(API_URL);
-
-        const history = await response.json();
+        const history = await Api.getHistory();
 
         historyContainer.innerHTML = "";
 

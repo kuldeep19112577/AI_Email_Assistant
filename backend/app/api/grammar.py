@@ -1,5 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
+from app.database.models import User
+from app.dependencies import get_current_user
 from app.schemas.grammar import (
     GrammarRequest,
     GrammarResponse
@@ -16,12 +18,16 @@ router = APIRouter(
     "/",
     response_model=GrammarResponse
 )
-def grammar_api(request: GrammarRequest):
+def grammar_api(
+    request: GrammarRequest,
+    current_user: User = Depends(get_current_user),
+):
 
     try:
 
         corrected = check_grammar(
-            request.text
+            user_id=current_user.id,
+            email=request.text,
         )
 
         return GrammarResponse(

@@ -2,12 +2,14 @@ from pydantic import BaseModel, EmailStr
 
 from sqlalchemy import (
     Column,
+    ForeignKey,
     Integer,
     String,
     Text,
     TIMESTAMP,
     func,
 )
+from sqlalchemy.orm import relationship
 
 from app.database.connection import Base
 
@@ -61,6 +63,11 @@ class User(Base):
         server_default=func.now()
     )
 
+    history = relationship(
+        "EmailHistory",
+        backref="user"
+    )
+
 
 # -----------------------------
 # Email History Table
@@ -73,6 +80,13 @@ class EmailHistory(Base):
     id = Column(
         Integer,
         primary_key=True,
+        index=True
+    )
+
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id"),
+        nullable=False,
         index=True
     )
 

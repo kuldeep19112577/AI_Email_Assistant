@@ -1,3 +1,5 @@
+Api.requireAuth();
+
 const grammarBtn = document.getElementById("grammarBtn");
 const copyBtn = document.getElementById("copyBtn");
 
@@ -33,37 +35,7 @@ grammarBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch(
-
-            "http://127.0.0.1:8000/grammar/",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
-
-                body: JSON.stringify({
-
-                    text: inputText.value
-
-                })
-
-            }
-
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(data.detail);
-
-        }
+        const data = await Api.checkGrammar(inputText.value);
 
         correctedText.value = data.corrected_text;
 

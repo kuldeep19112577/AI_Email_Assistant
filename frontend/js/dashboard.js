@@ -2,6 +2,8 @@
 // Dashboard JavaScript
 // ================================
 
+Api.requireAuth();
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const disabledCards = document.querySelectorAll(".disabled");
@@ -17,5 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+
+        logoutBtn.addEventListener("click", () => {
+
+            Api.logout();
+
+        });
+
+    }
 
 });
