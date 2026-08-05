@@ -1,0 +1,164 @@
+/* ===================================
+   PAGE
+=================================== */
+
+.page-title{
+
+    margin-top:10px;
+
+}
+
+.page-subtitle{
+
+    margin-bottom:40px;
+
+}
+
+/* ===================================
+   CARD
+=================================== */
+
+.card{
+
+    margin-bottom:30px;
+
+    animation:fadeIn .4s ease;
+
+}
+
+/* ===================================
+   FORM
+=================================== */
+
+.form-group{
+
+    margin-bottom:22px;
+
+}
+
+.form-group label{
+
+    color:#444;
+
+    font-size:16px;
+
+}
+
+textarea{
+
+    width:100%;
+
+    min-height:220px;
+
+    padding:15px;
+
+    border:1px solid #d9d9d9;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:16px;
+
+    resize:vertical;
+
+    background:#fff;
+
+    transition:.3s;
+
+}
+
+textarea:focus{
+
+    border-color:#2d5cff;
+
+    box-shadow:0 0 8px rgba(45,92,255,.18);
+
+}
+
+/* ===================================
+   OUTPUT
+=================================== */
+
+#generatedEmail{
+
+    background:#f8f9fc;
+
+    color:#333;
+
+    line-height:1.8;
+
+}
+
+/* ===================================
+   BUTTON GROUP
+=================================== */
+
+.button-group{
+
+    margin-top:20px;
+
+}
+/* ===================================
+   BUTTON
+=================================== */
+
+.btn{
+
+    margin-top:5px;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+}
+
+/* ===================================
+   ANIMATION
+=================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:768px){
+
+    .page-title{
+
+        font-size:32px;
+
+    }
+
+    .page-subtitle{
+
+        font-size:16px;
+
+    }
+
+    .card{
+
+        padding:25px;
+
+    }
+
+}

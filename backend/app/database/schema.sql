@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS email_history (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    feature VARCHAR(50) NOT NULL,
+
+    user_input TEXT NOT NULL,
+
+    ai_output LONGTEXT NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);

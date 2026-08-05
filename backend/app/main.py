@@ -7,6 +7,8 @@ from app.api.rewrite import router as rewrite_router
 from app.api.grammar import router as grammar_router
 from app.api.tone import router as tone_router
 
+from app.api.compose import router as compose_router
+
 app = FastAPI(title="AI Email Assistant")
 
 app.add_middleware(
@@ -25,3 +27,4 @@ app.include_router(email_router)
 app.include_router(rewrite_router)
 app.include_router(grammar_router)
 app.include_router(tone_router)
+app.include_router(compose_router)
