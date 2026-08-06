@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+nexturn_env/
+
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+
+# Test database
+test.db
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# VS Code
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# Logs
+*.log
