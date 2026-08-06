@@ -1,6 +1,16 @@
-version: "3.9"
-
 services:
+  mysql:
+    image: mysql:8.0
+    container_name: ai-email-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Shekhawat##12
+      MYSQL_DATABASE: ai_email_assistant
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
   backend:
     build:
       context: ./backend
@@ -9,6 +19,8 @@ services:
       - "8000:8000"
     env_file:
       - ./backend/.env
+    depends_on:
+      - mysql
     restart: unless-stopped
 
   frontend:
@@ -20,3 +32,6 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+
+volumes:
+  mysql_data:
