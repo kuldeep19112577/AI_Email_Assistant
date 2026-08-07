@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Generate Email</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/email.css">
+
+</head>
+
+<body>
+
+    <!-- ================= PAGE ================= -->
+    <!-- (sidebar + topbar are injected by common.js) -->
+
+    <main class="container">
+
+        <h1 class="page-title">
+            <span>✨</span> Generate Email
+        </h1>
+
+        <p class="page-subtitle">
+            Describe what you need — the AI will draft a ready-to-send email.
+        </p>
+
+        <div class="split-layout">
+
+            <!-- ================= INPUT CARD ================= -->
+
+            <section class="card">
+
+                <h2 class="section-title">
+                    <span>📝</span> Email Details
+                </h2>
+
+                <div class="form-group">
+
+                    <label for="emailType">
+                        Email Type
+                    </label>
+
+                    <select id="emailType">
+
+                        <option value="Formal">
+                            Formal
+                        </option>
+
+                        <option value="Informal">
+                            Informal
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                        <option value="Leave Request">
+                            Leave Request
+                        </option>
+
+                        <option value="Meeting Request">
+                            Meeting Request
+                        </option>
+
+                        <option value="Apology">
+                            Apology
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="recipient">
+                        Recipient
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recipient"
+                        placeholder="Example: HR Manager">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="tone">
+                        Tone
+                    </label>
+
+                    <select id="tone">
+
+                        <option value="Professional">
+                            Professional
+                        </option>
+
+                        <option value="Friendly">
+                            Friendly
+                        </option>
+
+                        <option value="Formal">
+                            Formal
+                        </option>
+
+                        <option value="Polite">
+                            Polite
+                        </option>
+
+                        <option value="Confident">
+                            Confident
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="purpose">
+                        Purpose
+                    </label>
+
+                    <textarea
+                        id="purpose"
+                        placeholder="Describe why you want to send this email..."></textarea>
+
+                </div>
+
+                <button
+                    id="generateBtn"
+                    class="btn">
+                    ✨ Generate Email
+                </button>
+
+            </section>
+
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Generated Email
+                </h2>
+
+                <textarea
+                    id="generatedEmail"
+                    readonly
+                    placeholder="Your generated email will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Email
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="js/Api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/email.js"></script>
+
+</body>
+
+</html>

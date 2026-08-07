@@ -1,0 +1,373 @@
+/* =========================================================
+   AI Email Assistant — shared auth styles
+   ========================================================= */
+:root {
+  --bg-1: #EEF1FA;
+  --bg-2: #F7F8FC;
+  --card: #FFFFFF;
+  --border: #E3E6EF;
+
+  --accent: #4F46E5;
+  --accent-hover: #4338CA;
+  --accent-soft: #EEF0FE;
+
+  --text: #1F2430;
+  --text-muted: #6B7280;
+  --text-faint: #9CA3AF;
+  --danger: #E5484D;
+  --success: #16A34A;
+  --warn: #D97706;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 20px 45px -18px rgba(31, 36, 48, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--font-body);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background: radial-gradient(90% 60% at 50% 0%, var(--bg-2) 0%, var(--bg-1) 100%);
+}
+
+button, input { font-family: inherit; }
+a { color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   Card
+   --------------------------------------------------------- */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px 34px;
+  animation: card-in 0.4s ease both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+
+.auth-brand__mark {
+  flex-shrink: 0;
+}
+
+.auth-brand__text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.auth-card__header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.auth-card__header h1 {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+
+.auth-card__header p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------
+   Buttons
+   --------------------------------------------------------- */
+.btn {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn--google {
+  background: #FFFFFF;
+  color: var(--text);
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn--google:hover {
+  background: #FAFAFC;
+  border-color: var(--text-faint);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+  padding: 13px 16px;
+  margin-top: 4px;
+  position: relative;
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 8px 20px -6px rgba(79, 70, 229, 0.45);
+}
+
+.btn--primary:active { transform: translateY(1px); }
+
+.btn--primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn--primary.is-loading .btn__label { visibility: hidden; }
+
+.btn--primary.is-loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------------------------------------------------------
+   Divider
+   --------------------------------------------------------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--text-faint);
+  font-size: 12.5px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------------------------------------------------------
+   Fields
+   --------------------------------------------------------- */
+.field { margin-bottom: 16px; }
+
+.field--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.field input {
+  width: 100%;
+  background: #FBFBFD;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10.5px 13px;
+  font-size: 14.5px;
+  color: var(--text);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.field input::placeholder { color: var(--text-faint); }
+
+.field input:hover { border-color: #C7CBDA; }
+
+.field input:focus {
+  border-color: var(--accent);
+  background: #FFFFFF;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.field.has-error input { border-color: var(--danger); }
+
+.field__error {
+  min-height: 15px;
+  margin: 5px 0 0;
+  font-size: 12.5px;
+  color: var(--danger);
+}
+
+.field__hint {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.field__input-wrap { position: relative; }
+
+.field__input-wrap input { padding-right: 42px; }
+
+.toggle-visibility {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  padding: 7px;
+  display: flex;
+  border-radius: 6px;
+  transition: color 0.15s ease;
+}
+
+.toggle-visibility:hover { color: var(--text); }
+
+/* --- Checkbox / forgot link (login) --- */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.forgot-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.forgot-link:hover { text-decoration: underline; }
+
+/* --- Password strength (signup) --- */
+.strength-meter {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.strength-meter span {
+  height: 4px;
+  flex: 1;
+  background: var(--border);
+  border-radius: 2px;
+  transition: background 0.25s ease;
+}
+
+.strength-meter.s1 span:nth-child(1) { background: var(--danger); }
+.strength-meter.s2 span:nth-child(-n+2) { background: var(--warn); }
+.strength-meter.s3 span:nth-child(-n+3) { background: #EAB308; }
+.strength-meter.s4 span:nth-child(-n+4) { background: var(--success); }
+
+.strength-label {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--text-faint);
+  min-height: 15px;
+}
+
+/* ---------------------------------------------------------
+   Status + footer link
+   --------------------------------------------------------- */
+.form-status {
+  min-height: 18px;
+  margin: 12px 0 0;
+  font-size: 13px;
+  text-align: center;
+  color: var(--success);
+}
+
+.auth-footer {
+  text-align: center;
+  margin: 22px 0 0;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.auth-footer a { font-weight: 600; text-decoration: none; }
+.auth-footer a:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 480px) {
+  .auth-card { padding: 32px 24px 28px; border-radius: var(--radius-md); }
+  .auth-card__header h1 { font-size: 20px; }
+}

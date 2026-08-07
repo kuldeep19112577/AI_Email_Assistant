@@ -1,0 +1,22 @@
+# Virtual Environment
+nexturn_env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+backend/test.db
+
+# Coverage
+backend/.coverage

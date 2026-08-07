@@ -1,0 +1,4 @@
+/* Page-specific tweaks — layout, buttons, and form structure
+   are provided by common.css. */
+
+.page-title span{ font-size:24px; }

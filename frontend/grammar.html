@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Grammar Check</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/grammar.css">
+
+</head>
+
+<body>
+
+    <!-- ================= PAGE ================= -->
+
+    <main class="container">
+
+        <h1 class="page-title">
+            <span>✔️</span> Grammar Check
+        </h1>
+
+        <p class="page-subtitle">
+            Correct grammar, spelling and punctuation using AI.
+        </p>
+
+        <div class="split-layout">
+
+            <!-- ================= INPUT CARD ================= -->
+
+            <section class="card">
+
+                <h2 class="section-title">
+                    <span>📝</span> Enter Text
+                </h2>
+
+                <div class="form-group">
+
+                    <label for="inputText">
+                        Email / Text
+                    </label>
+
+                    <textarea
+                        id="inputText"
+                        placeholder="Paste your email or text here..."></textarea>
+
+                </div>
+
+                <button
+                    id="grammarBtn"
+                    class="btn">
+                    ✔️ Check Grammar
+                </button>
+
+            </section>
+
+            <!-- ================= OUTPUT CARD ================= -->
+
+            <section class="card output-card">
+
+                <h2 class="section-title">
+                    <span>📩</span> Corrected Text
+                </h2>
+
+                <textarea
+                    id="correctedText"
+                    readonly
+                    placeholder="Corrected text will appear here..."></textarea>
+
+                <div class="button-group">
+
+                    <button
+                        id="copyBtn"
+                        class="btn btn-secondary"
+                        disabled>
+                        Copy Text
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="js/Api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/grammar.js"></script>
+
+</body>
+
+</html>
