@@ -1,6 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.database.connection import Base, engine
+from app.database import models
+
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(title="AI Email Assistant")
+
 from app.api.auth import router as auth_router
 from app.api.email import router as email_router
 from app.api.rewrite import router as rewrite_router
@@ -16,10 +23,15 @@ app = FastAPI(title="AI Email Assistant")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-        "http://127.0.0.1:5501",
-        "http://localhost:5501"
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "http://127.0.0.1:5501",
+    "http://localhost:5501",
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+    "http://52.66.168.40:8080",
+    "http://aiemailassistant.duckdns.org",
+    "https://aiemailassistant.duckdns.org",    
     ],
     allow_credentials=True,
     allow_methods=["*"],
